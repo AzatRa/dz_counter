@@ -1,18 +1,16 @@
-using System;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
-    [Header("Через сколько повторять?")]
+    [Header("Г—ГҐГ°ГҐГ§ Г±ГЄГ®Г«ГјГЄГ® ГЇГ®ГўГІГ®Г°ГїГІГј?")]
     [SerializeField] private float _repeatRate = 0.5f;
-    [Header("Сколько прибавлять?")]
+    [Header("Г‘ГЄГ®Г«ГјГЄГ® ГЇГ°ГЁГЎГ ГўГ«ГїГІГј?")]
     [SerializeField] private float _value = 1.0f;
-    [Header("Кпопка для управления.")]
+    [Header("ГЉГЇГ®ГЇГЄГ  Г¤Г«Гї ГіГЇГ°Г ГўГ«ГҐГ­ГЁГї.")]
     [SerializeField] private Button _button;
 
     private Coroutine _coroutine;
