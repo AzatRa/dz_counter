@@ -6,24 +6,21 @@ public class CounterView : MonoBehaviour
     [SerializeField] private Counter _counter;
     [SerializeField] private TextMeshProUGUI _text;
 
-    private int _lastCount = -1;
-
     private void OnEnable()
     {
-        _counter.CountChanged += OnCountChanged;
+        _counter.ValueChanged += OnCountChanged;
 
-        DisplayCounter(_counter.CurrentCount);
+        DisplayCounter(_counter.CurrentValue);
     }
 
     private void OnDisable()
     {
-        _counter.CountChanged -= OnCountChanged;
+        _counter.ValueChanged -= OnCountChanged;
     }
 
     private void OnCountChanged(int newCount)
     {
         DisplayCounter(newCount);
-        _lastCount = newCount;
     }
 
     private void DisplayCounter(int count)
