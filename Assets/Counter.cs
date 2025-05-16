@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
-    [Header("Через сколько повторять?")]
+    [Header("Cherez skol'ko povtoryat'?")]
     [SerializeField] private float _repeatRate = 0.5f;
-    [Header("Сколько прибавлять?")]
+    [Header("Skol'ko pribavlyat'?")]
     [SerializeField] private int _value = 1;
-    [Header("Кпопка для управления.")]
+    [Header("Knopka dlya upravleniya.")]
     [SerializeField] private Button _button;
 
     private Coroutine _coroutine;
     private int _currentCount;
-    private int count = 0;
+    private int _count = 0;
     private bool _isRunning = true;
 
-    public int CurrentCount => _currentCount;
+    public int CurrentValue => _currentCount;
 
-    public event Action<int> CountChanged;
+    public event Action<int> ValueChanged;
 
     private void OnEnable()
     {
@@ -48,18 +48,18 @@ public class Counter : MonoBehaviour
     {
         Stop();
         _isRunning = true;
-        _coroutine = StartCoroutine(CounterCoroutine());
+        _coroutine = StartCoroutine(Coroutine());
     }
 
-    private IEnumerator CounterCoroutine()
+    private IEnumerator Coroutine()
     {
         var wait = new WaitForSecondsRealtime(_repeatRate);
 
         while (_isRunning)
         {
-            count++;
-            _currentCount = count * _value;
-            CountChanged?.Invoke(_currentCount);
+            _count++;
+            _currentCount = _count * _value;
+            ValueChanged?.Invoke(_currentCount);
             yield return wait;
         }
     }
